@@ -1,0 +1,20 @@
+model BorrowItem {
+  id        Int     @id @default(autoincrement())
+  
+  
+  quantity  Int     @default(1)
+  returned  Int     @default(0) 
+
+  borrowId  Int
+  borrow    Borrow?  @relation(fields: [borrowId], references: [id])
+
+  bookId    Int
+  book      Book?        @relation(fields: [bookId], references: [id])
+
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  deletedAt  DateTime?
+
+  
+  @@map("borrowItems")
+}

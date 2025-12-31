@@ -1,0 +1,20 @@
+model Book {
+    id              Int         @id @default(autoincrement())
+    judul           String      
+    penulis         String      
+    penerbit        String
+    status          Boolean
+
+    categoryId  Int?     // Foreign Key
+    category    Category? @relation(fields: [categoryId], references: [id])
+    
+    userId  Int?     // Foreign Key
+    user    User? @relation(fields: [userId], references: [id])
+
+    borrotItem      BorrowItem[]
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime    @updatedAt
+    
+    deletedAt       DateTime? 
+     @@map("books")
+}

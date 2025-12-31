@@ -1,0 +1,17 @@
+model Borrow {
+    id              Int          @id @default(autoincrement())
+
+    userId          Int   // Foreign Key
+    user            User?        @relation(fields: [userId], references: [id])
+
+    tanggal_Pinjam            DateTime     @default(now())
+    tanggal_Pengembalian      DateTime?
+    
+    borrowItem      BorrowItem[]
+    
+    createdAt       DateTime     @default(now())
+    updatedAt       DateTime     @updatedAt
+
+    deletedAt       DateTime? 
+    @@map("borrows")
+}
