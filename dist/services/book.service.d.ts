@@ -1,4 +1,4 @@
-import type { Prisma, Book } from "../generated";
+import type { Prisma, Book } from "../generated/index.js";
 import type { IBookRepository } from "../repository/book.repository.js";
 interface FindAllParams {
     page: number;
