@@ -32,8 +32,29 @@ export declare class CategoryRepository implements ICategoryRepository {
     create(data: Prisma.CategoryCreateInput): Promise<Category>;
     update(id: number, data: Prisma.CategoryUpdateInput): Promise<Category>;
     softDelete(id: number): Promise<Category>;
-    findComplex(nama: string): Promise<any>;
-    getStats(): Promise<any>;
-    getByCategoryStats(): Promise<any>;
+    findComplex(nama: string): Promise<{
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        nama: string;
+        deskripsi: string;
+    }[]>;
+    getStats(): Promise<Prisma.GetCategoryAggregateType<{
+        _count: {
+            id: true;
+        };
+        _min: {
+            createdAt: true;
+        };
+        _max: {
+            createdAt: true;
+        };
+    }>>;
+    getByCategoryStats(): Promise<(Prisma.PickEnumerable<Prisma.CategoryGroupByOutputType, "nama"[]> & {
+        _count: {
+            id: number;
+        };
+    })[]>;
 }
 //# sourceMappingURL=category.repository.d.ts.map

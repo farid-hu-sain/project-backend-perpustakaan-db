@@ -1,7 +1,7 @@
-import prisma from "../database";
-import config from '../utils/env';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import prisma from "../database.js";
+import config from "../utils/env.js";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 export const register = async (data) => {
     const existingUser = await prisma.user.findUnique({ where: { email: data.email } });
     if (existingUser) {
@@ -33,7 +33,7 @@ export const login = async (data) => {
     if (!isValid) {
         throw new Error("Email atau password salah");
     }
-    const token = jwt.sign({ id: user.id, role: user.role }, config.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id, role: user.role }, config.JWT_SECRET, { expiresIn: "1h" });
     const userReturn = {
         email: user.email,
         username: user.username,

@@ -32,8 +32,33 @@ export declare class BookRepository implements IBookRepository {
     create(data: Prisma.BookCreateInput): Promise<Book>;
     update(id: number, data: Prisma.BookUpdateInput): Promise<Book>;
     softDelete(id: number): Promise<Book>;
-    findComplex(judul: string): Promise<any>;
-    getStats(): Promise<any>;
-    getByBookStats(): Promise<any>;
+    findComplex(judul: string): Promise<{
+        id: number;
+        judul: string;
+        penulis: string;
+        penerbit: string;
+        status: boolean;
+        categoryId: number | null;
+        userId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+    }[]>;
+    getStats(): Promise<Prisma.GetBookAggregateType<{
+        _count: {
+            id: true;
+        };
+        _min: {
+            createdAt: true;
+        };
+        _max: {
+            createdAt: true;
+        };
+    }>>;
+    getByBookStats(): Promise<(Prisma.PickEnumerable<Prisma.BookGroupByOutputType, "status"[]> & {
+        _count: {
+            id: number;
+        };
+    })[]>;
 }
 //# sourceMappingURL=book.repository.d.ts.map

@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import type { IBorrowService } from "../services/borrow.service";
+import type { IBorrowService } from "../services/borrow.service.js";
 export interface IBorrowController {
     getAllBorrowHandler(req: Request, res: Response): Promise<void>;
     getBorrowByIdHandler(req: Request, res: Response): Promise<void>;

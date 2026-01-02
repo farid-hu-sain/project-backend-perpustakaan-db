@@ -32,8 +32,30 @@ export declare class BorrowRepository implements IBorrowRepository {
     create(data: Prisma.BorrowCreateInput): Promise<Borrow>;
     update(id: number, data: Prisma.BorrowUpdateInput): Promise<Borrow>;
     softDelete(id: number): Promise<Borrow>;
-    findComplex(userId: number): Promise<any>;
-    getStats(): Promise<any>;
-    getByBorrowStats(): Promise<any>;
+    findComplex(userId: number): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        tanggal_Pinjam: Date;
+        tanggal_Pengembalian: Date | null;
+    }[]>;
+    getStats(): Promise<Prisma.GetBorrowAggregateType<{
+        _count: {
+            id: true;
+        };
+        _min: {
+            createdAt: true;
+        };
+        _max: {
+            createdAt: true;
+        };
+    }>>;
+    getByBorrowStats(): Promise<(Prisma.PickEnumerable<Prisma.BorrowGroupByOutputType, "userId"[]> & {
+        _count: {
+            id: number;
+        };
+    })[]>;
 }
 //# sourceMappingURL=borrow.repository.d.ts.map

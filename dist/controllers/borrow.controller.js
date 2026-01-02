@@ -1,4 +1,4 @@
-import { successResponse } from "../utils/response";
+import { successResponse } from "../utils/response.js";
 export class BorrowController {
     borrowService;
     constructor(borrowService) {
@@ -15,7 +15,7 @@ export class BorrowController {
         const limit = Number(req.query.limit) || 10;
         const search = req.query.search;
         const sortBy = req.query.sortBy;
-        const sortOrder = req.query.sortOrder || 'desc';
+        const sortOrder = req.query.sortOrder || "desc";
         const result = await this.borrowService.getAll({
             page,
             limit,
@@ -29,11 +29,11 @@ export class BorrowController {
             total: result.total,
             totalPages: result.totalPages
         };
-        successResponse(res, 'borrow berhasil ditambahkan', result.borrow, pagination);
+        successResponse(res, "borrow berhasil ditambahkan", result.borrow, pagination);
     }
     async getBorrowByIdHandler(req, res) {
         if (!req.params.id) {
-            throw new Error('tidak ada param');
+            throw new Error("tidak ada param");
         }
         const borrow = await this.borrowService.getBorrowById(req.params.id);
         successResponse(res, "borrow sudah diambil", borrow);

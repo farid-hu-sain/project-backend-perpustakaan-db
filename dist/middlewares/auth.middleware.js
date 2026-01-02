@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken';
-import { errorResponse } from '../utils/response';
-import config from "../utils/env";
+import jwt from "jsonwebtoken";
+import { errorResponse } from "../utils/response.js";
+import config from "../utils/env.js";
 export const authenticate = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (!authHeader)
@@ -16,15 +16,15 @@ export const authenticate = (req, res, next) => {
     }
 };
 export const memberOnly = (req, res, next) => {
-    if (req.user?.role !== 'MEMBER') {
-        return res.status(403).json({ error: 'Member only' });
+    if (req.user?.role !== "MEMBER") {
+        return res.status(403).json({ error: "Member only" });
     }
     next();
 };
 export const AdminOnly = (req, res, next) => {
-    if (req.user?.role === 'ADMIN') {
+    if (req.user?.role === "ADMIN") {
         return next();
     }
-    return res.status(403).json({ error: 'Access denied' });
+    return res.status(403).json({ error: "Access denied" });
 };
 //# sourceMappingURL=auth.middleware.js.map

@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import type { IUserService } from "../services/user.service";
+import type { IUserService } from "../services/user.service.js";
 export interface IUserController {
     getAllUserHandler(req: Request, res: Response): Promise<void>;
     getUserByIdHandler(req: Request, res: Response): Promise<void>;

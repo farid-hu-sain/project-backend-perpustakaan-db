@@ -1,4 +1,4 @@
-import { successResponse } from "../utils/response";
+import { successResponse } from "../utils/response.js";
 export class BookController {
     bookService;
     constructor(bookService) {
@@ -15,7 +15,7 @@ export class BookController {
         const limit = Number(req.query.limit) || 10;
         const search = req.query.search;
         const sortBy = req.query.sortBy;
-        const sortOrder = req.query.sortOrder || 'desc';
+        const sortOrder = req.query.sortOrder || "desc";
         const result = await this.bookService.getAll({
             page,
             limit,
@@ -29,11 +29,11 @@ export class BookController {
             total: result.total,
             totalPages: result.totalPages
         };
-        successResponse(res, 'buku berhasil ditambahkan', result.book, pagination);
+        successResponse(res, "buku berhasil ditambahkan", result.book, pagination);
     }
     async getBookByIdHandler(req, res) {
         if (!req.params.id) {
-            throw new Error('tidak ada param');
+            throw new Error("tidak ada param");
         }
         const book = await this.bookService.getBookById(req.params.id);
         successResponse(res, "buku sudah diambil", book);

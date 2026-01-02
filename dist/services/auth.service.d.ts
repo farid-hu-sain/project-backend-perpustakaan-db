@@ -4,18 +4,18 @@ export declare const register: (data: {
     password: string;
     role?: string;
 }) => Promise<{
-    email: any;
-    username: any;
-    role: any;
+    email: string;
+    username: string;
+    role: string;
 }>;
 export declare const login: (data: {
     email: string;
     password: string;
 }) => Promise<{
     userReturn: {
-        email: any;
-        username: any;
-        role: any;
+        email: string;
+        username: string;
+        role: string;
     };
     token: string;
 }>;

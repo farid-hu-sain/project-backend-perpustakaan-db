@@ -1,5 +1,5 @@
 import type { Prisma, Category } from "../generated";
-import type { ICategoryRepository } from "../repository/category.repository";
+import type { ICategoryRepository } from "../repository/category.repository.js";
 interface FindAllParams {
     page: number;
     limit: number;
@@ -38,7 +38,14 @@ export declare class CategoryService implements ICategoryService {
         deskripsi: string;
     }): Promise<Category>;
     updateCategory(id: string, data: Partial<Category>): Promise<Category>;
-    deleteCategory(id: string): Promise<Category>;
+    deleteCategory(id: string): Promise<{
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        nama: string;
+        deskripsi: string;
+    }>;
     exec(): Promise<{
         overview: Prisma.GetCategoryAggregateType<{
             _count: {
