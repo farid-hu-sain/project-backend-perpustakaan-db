@@ -5,11 +5,12 @@
   "main": "index.ts",
   "scripts": {
     "prisma-generate": "prisma generate",
+    "prisma-migrate": "prisma generate && prisma migrate dev", 
     "prisma-reset": "prisma migrate reset",
     "seed": "tsx src/prisma/seeder.ts",
-    "dev": "tsx watch src/index.ts " ,
-    "start": "node dist/index.js ",
-    "build": "rimraf dist && npm run prisma-migrate && rm generated/schema.prisma && tsc && ts-add-js-extension --dir=dist",
+    "dev": "tsx watch src/index.ts",
+    "build": "rimraf dist && prisma generate && tsc && ts-add-js-extension --dir=dist",
+    "start": "prisma migrate deploy && node dist/index.js",
     "test": "jest"
   },
   "keywords": [],
