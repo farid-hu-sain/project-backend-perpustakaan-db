@@ -5,7 +5,6 @@
   "main": "index.ts",
   "scripts": {
     "prisma-generate": "prisma generate",
-    "prisma-migrate": "prisma generate && prisma migrate dev",
     "prisma-reset": "prisma migrate reset",
     "seed": "tsx src/prisma/seeder.ts",
     "dev": "tsx watch src/index.ts " ,
