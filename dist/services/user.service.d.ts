@@ -1,4 +1,4 @@
-import type { Prisma, User } from "../generated/index.js";
+import type { Prisma, User } from "../generated";
 import type { IUserRepository } from "../repository/user.repository.js";
 interface FindAllParams {
     page: number;

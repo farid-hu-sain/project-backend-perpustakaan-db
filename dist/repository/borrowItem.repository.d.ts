@@ -1,4 +1,4 @@
-import type { Prisma, PrismaClient, BorrowItem } from "../generated/index.js";
+import type { Prisma, PrismaClient, BorrowItem } from "../generated";
 export interface IBorrowItemRepository {
     list(skip: number, take: number, where: Prisma.BorrowItemWhereInput, orderBy: Prisma.BorrowItemOrderByWithRelationInput): Promise<BorrowItem[]>;
     countAll(where: Prisma.BorrowItemWhereInput): Promise<number>;

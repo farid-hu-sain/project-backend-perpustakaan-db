@@ -10,7 +10,7 @@
     "seed": "tsx src/prisma/seeder.ts",
     "dev": "tsx watch src/index.ts " ,
     "start": "node dist/index.js ",
-    "build": "npm run prisma-generate && tsc && cp -r src/generated dist/ && ts-add-js-extension --dir=dist",
+    "build": "rimraf dist && npm run prisma-generate && tsc && ts-add-js-extension --dir=dist",
     "test": "jest"
   },
   "keywords": [],

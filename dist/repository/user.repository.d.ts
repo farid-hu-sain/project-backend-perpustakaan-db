@@ -1,4 +1,4 @@
-import type { Prisma, PrismaClient, User } from "../generated/index.js";
+import type { Prisma, PrismaClient, User } from "../generated";
 export interface IUserRepository {
     list(skip: number, take: number, where: Prisma.UserWhereInput, orderBy: Prisma.UserOrderByWithRelationInput): Promise<User[]>;
     countAll(where: Prisma.UserWhereInput): Promise<number>;

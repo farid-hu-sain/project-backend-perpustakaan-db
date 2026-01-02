@@ -1,4 +1,4 @@
-import type { Prisma, Borrow } from "../generated/index.js";
+import type { Prisma, Borrow } from "../generated";
 import type { IBorrowRepository } from "../repository/borrow.repository.js";
 interface FindAllParams {
     page: number;
