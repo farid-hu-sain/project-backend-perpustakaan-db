@@ -1,5 +1,5 @@
 import type { Prisma, Book } from "../generated";
-import type { IBookRepository } from "../repository/book.repository.js";
+import type { IBookRepository } from "../repository/book.repository";
 interface FindAllParams {
     page: number;
     limit: number;
@@ -45,18 +45,7 @@ export declare class BookService implements IBookService {
         status: boolean;
     }): Promise<Book>;
     updateBook(id: string, data: Partial<Book>): Promise<Book>;
-    deleteBook(id: string): Promise<{
-        id: number;
-        judul: string;
-        penulis: string;
-        penerbit: string;
-        status: boolean;
-        categoryId: number | null;
-        userId: number | null;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-    }>;
+    deleteBook(id: string): Promise<Book>;
     exec(): Promise<{
         overview: Prisma.GetBookAggregateType<{
             _count: {

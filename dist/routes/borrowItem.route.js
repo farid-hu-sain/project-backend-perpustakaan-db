@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { BorrowItemController } from "../controllers/borrowItem.controller.js";
-import { validate } from "../utils/validator.js";
-import { createBorrowItemValidation, getBorrowItemByIdValidation } from "../middlewares/borrowItem.validation.js";
-import { BorrowItemRepository } from "../repository/borrowItem.repository.js";
-import { BorrowItemService } from "../services/borrowItem.service.js";
-import prismaIntance from "../database.js";
+import { BorrowItemController } from "../controllers/borrowItem.controller";
+import { validate } from "../utils/validator";
+import { createBorrowItemValidation, getBorrowItemByIdValidation } from "../middlewares/borrowItem.validation";
+import { BorrowItemRepository } from "../repository/borrowItem.repository";
+import { BorrowItemService } from "../services/borrowItem.service";
+import prismaIntance from "../database";
 const repo = new BorrowItemRepository(prismaIntance);
 const service = new BorrowItemService(repo);
 const controller = new BorrowItemController(service);
@@ -57,7 +57,7 @@ const router = Router();
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/", controller.getAllBorrowItemHandler);
+router.get('/', controller.getAllBorrowItemHandler);
 /**
  * @swagger
  * /borrowItem/stats:
@@ -87,7 +87,7 @@ router.get("/", controller.getAllBorrowItemHandler);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/stats", controller.getstats);
+router.get('/stats', controller.getstats);
 /**
  * @swagger
  * /borrowItem/{id}:
@@ -124,7 +124,7 @@ router.get("/stats", controller.getstats);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/:id", validate(getBorrowItemByIdValidation), controller.getBorrowItemByIdHandler);
+router.get('/:id', validate(getBorrowItemByIdValidation), controller.getBorrowItemByIdHandler);
 /**
  * @swagger
  * /borrowItem/{id}:
@@ -173,7 +173,7 @@ router.get("/:id", validate(getBorrowItemByIdValidation), controller.getBorrowIt
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.post("/", validate(createBorrowItemValidation), controller.createBorrowItemHandler);
+router.post('/', validate(createBorrowItemValidation), controller.createBorrowItemHandler);
 /**
  * @swagger
  * /borrowItem/{id}:
@@ -226,7 +226,7 @@ router.post("/", validate(createBorrowItemValidation), controller.createBorrowIt
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.put("/:id", controller.updateBorrowItemHandler);
+router.put('/:id', controller.updateBorrowItemHandler);
 /**
  * @swagger
  * /borrowItem/{id}:
@@ -263,6 +263,6 @@ router.put("/:id", controller.updateBorrowItemHandler);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.delete("/:id", controller.deleteBorrowItemHandler);
+router.delete('/:id', controller.deleteBorrowItemHandler);
 export default router;
 //# sourceMappingURL=borrowItem.route.js.map

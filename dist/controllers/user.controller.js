@@ -1,4 +1,4 @@
-import { successResponse } from "../utils/response.js";
+import { successResponse } from "../utils/response";
 export class UserController {
     userService;
     constructor(userService) {
@@ -15,7 +15,7 @@ export class UserController {
         const limit = Number(req.query.limit) || 10;
         const search = req.query.search;
         const sortBy = req.query.sortBy;
-        const sortOrder = req.query.sortOrder || "desc";
+        const sortOrder = req.query.sortOrder || 'desc';
         const result = await this.userService.getAll({
             page,
             limit,
@@ -29,11 +29,11 @@ export class UserController {
             total: result.total,
             totalPages: result.totalPages
         };
-        successResponse(res, "kategori berhasil ditambahkan", result.user, pagination);
+        successResponse(res, 'kategori berhasil ditambahkan', result.user, pagination);
     }
     async getUserByIdHandler(req, res) {
         if (!req.params.id) {
-            throw new Error("tidak ada param");
+            throw new Error('tidak ada param');
         }
         const user = await this.userService.getUserById(req.params.id);
         successResponse(res, "kategori sudah diambil", user);

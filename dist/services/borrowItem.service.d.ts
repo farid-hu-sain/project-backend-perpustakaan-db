@@ -1,5 +1,5 @@
 import type { Prisma, BorrowItem } from "../generated";
-import type { IBorrowItemRepository } from "../repository/borrowItem.repository.js";
+import type { IBorrowItemRepository } from "../repository/borrowItem.repository";
 interface FindAllParams {
     page: number;
     limit: number;
@@ -44,16 +44,7 @@ export declare class BorrowItemService implements IBorrowItemService {
         bookId: number;
     }): Promise<BorrowItem>;
     updateBorrowItem(id: string, data: Partial<BorrowItem>): Promise<BorrowItem>;
-    deleteBorrowItem(id: string): Promise<{
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        quantity: number;
-        returned: number;
-        borrowId: number;
-        bookId: number;
-    }>;
+    deleteBorrowItem(id: string): Promise<BorrowItem>;
     exec(): Promise<{
         overview: Prisma.GetBorrowItemAggregateType<{
             _count: {

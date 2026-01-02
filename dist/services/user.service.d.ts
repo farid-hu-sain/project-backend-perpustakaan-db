@@ -1,5 +1,5 @@
 import type { Prisma, User } from "../generated";
-import type { IUserRepository } from "../repository/user.repository.js";
+import type { IUserRepository } from "../repository/user.repository";
 interface FindAllParams {
     page: number;
     limit: number;
@@ -43,16 +43,7 @@ export declare class UserService implements IUserService {
         role: string;
     }): Promise<User>;
     updateUser(id: string, data: Partial<User>): Promise<User>;
-    deleteUser(id: string): Promise<{
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        username: string;
-        email: string;
-        password_hash: string;
-        role: string;
-    }>;
+    deleteUser(id: string): Promise<User>;
     exec(): Promise<{
         overview: Prisma.GetUserAggregateType<{
             _count: {

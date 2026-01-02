@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { BookController } from "../controllers/book.controller.js";
-import { validate } from "../utils/validator.js";
-import { createBookValidation, getBookByIdValidation } from "../middlewares/book.validation.js";
-import { BookRepository } from "../repository/book.repository.js";
-import { BookService } from "../services/book.service.js";
-import prismaIntance from "../database.js";
-import { authenticate } from "../middlewares/auth.middleware.js";
+import { BookController } from "../controllers/book.controller";
+import { validate } from "../utils/validator";
+import { createBookValidation, getBookByIdValidation } from "../middlewares/book.validation";
+import { BookRepository } from "../repository/book.repository";
+import { BookService } from "../services/book.service";
+import prismaIntance from "../database";
+import { authenticate } from "../middlewares/auth.middleware";
 const repo = new BookRepository(prismaIntance);
 const service = new BookService(repo);
 const controller = new BookController(service);
@@ -58,7 +58,7 @@ const router = Router();
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/", authenticate, controller.getAllBookHandler);
+router.get('/', authenticate, controller.getAllBookHandler);
 /**
  * @swagger
  * /book/stats:
@@ -88,7 +88,7 @@ router.get("/", authenticate, controller.getAllBookHandler);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/stats", authenticate, controller.getstats);
+router.get('/stats', authenticate, controller.getstats);
 /**
  * @swagger
  * /book/{id}:
@@ -125,7 +125,7 @@ router.get("/stats", authenticate, controller.getstats);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/:id", authenticate, validate(getBookByIdValidation), controller.getBookByIdHandler);
+router.get('/:id', authenticate, validate(getBookByIdValidation), controller.getBookByIdHandler);
 /**
  * @swagger
  * /book/{id}:
@@ -184,7 +184,7 @@ router.get("/:id", authenticate, validate(getBookByIdValidation), controller.get
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.post("/", authenticate, validate(createBookValidation), controller.createBookHandler);
+router.post('/', authenticate, validate(createBookValidation), controller.createBookHandler);
 /**
  * @swagger
  * /book/{id}:
@@ -244,7 +244,7 @@ router.post("/", authenticate, validate(createBookValidation), controller.create
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.put("/:id", authenticate, controller.updateBookHandler);
+router.put('/:id', authenticate, controller.updateBookHandler);
 /**
  * @swagger
  * /book/{id}:
@@ -281,6 +281,6 @@ router.put("/:id", authenticate, controller.updateBookHandler);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.delete("/:id", authenticate, controller.deleteBookHandler);
+router.delete('/:id', authenticate, controller.deleteBookHandler);
 export default router;
 //# sourceMappingURL=book.route.js.map

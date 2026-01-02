@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import type { ICategoryService } from "../services/category.service.js";
+import type { ICategoryService } from "../services/category.service";
 export interface ICategoryController {
     getAllCategoryHandler(req: Request, res: Response): Promise<void>;
     getCategoryByIdHandler(req: Request, res: Response): Promise<void>;
