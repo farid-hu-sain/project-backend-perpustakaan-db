@@ -1,4 +1,4 @@
-import type { Prisma, Borrow} from "../generated"
+import type { Prisma, Borrow} from "../../dist/generated"
 import type { IBorrowRepository } from "../repository/borrow.repository"
 
 interface FindAllParams {

@@ -1,4 +1,4 @@
-import type {  Prisma, PrismaClient, BorrowItem } from "../generated";
+import type {  Prisma, PrismaClient, BorrowItem } from "../../dist/generated";
 
 export interface IBorrowItemRepository {
     list(

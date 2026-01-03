@@ -1,4 +1,4 @@
-import type { Prisma, BorrowItem } from "../generated";
+import type { Prisma, BorrowItem } from "../../dist/generated";
 import type { IBorrowItemRepository } from "../repository/borrowItem.repository";
 interface FindAllParams {
     page: number;

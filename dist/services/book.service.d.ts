@@ -1,4 +1,4 @@
-import type { Prisma, Book } from "../generated";
+import type { Prisma, Book } from "../../dist/generated";
 import type { IBookRepository } from "../repository/book.repository";
 interface FindAllParams {
     page: number;

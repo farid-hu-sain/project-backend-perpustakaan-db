@@ -1,4 +1,4 @@
-import type {  Prisma, PrismaClient, User } from "../generated";
+import type {  Prisma, PrismaClient, User } from "../../dist/generated";
 
 export interface IUserRepository {
     list(
