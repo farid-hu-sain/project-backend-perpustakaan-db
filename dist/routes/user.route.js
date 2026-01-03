@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { UserController } from "../controllers/user.controller.js";
-import { validate } from "../utils/validator.js";
-import { createUserValidation, getUserByIdValidation } from "../middlewares/user.validation.js";
-import { UserRepository } from "../repository/user.repository.js";
-import { UserService } from "../services/user.service.js";
-import prismaIntance from "../database.js";
-import { authenticate } from "../middlewares/auth.middleware.js";
+import { UserController } from "../controllers/user.controller";
+import { validate } from "../utils/validator";
+import { createUserValidation, getUserByIdValidation } from "../middlewares/user.validation";
+import { UserRepository } from "../repository/user.repository";
+import { UserService } from "../services/user.service";
+import prismaIntance from "../database";
+import { authenticate } from "../middlewares/auth.middleware";
 const repo = new UserRepository(prismaIntance);
 const service = new UserService(repo);
 const controller = new UserController(service);
@@ -58,7 +58,7 @@ const router = Router();
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/", authenticate, controller.getAllUserHandler);
+router.get('/', authenticate, controller.getAllUserHandler);
 /**
  * @swagger
  * /user/stats:
@@ -88,7 +88,7 @@ router.get("/", authenticate, controller.getAllUserHandler);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/stats", authenticate, controller.getstats);
+router.get('/stats', authenticate, controller.getstats);
 /**
  * @swagger
  * /user/{id}:
@@ -125,7 +125,7 @@ router.get("/stats", authenticate, controller.getstats);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/:id", authenticate, validate(getUserByIdValidation), controller.getUserByIdHandler);
+router.get('/:id', authenticate, validate(getUserByIdValidation), controller.getUserByIdHandler);
 /**
  * @swagger
  * /user/{id}:
@@ -176,7 +176,7 @@ router.get("/:id", authenticate, validate(getUserByIdValidation), controller.get
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.post("/", authenticate, validate(createUserValidation), controller.createUserHandler);
+router.post('/', authenticate, validate(createUserValidation), controller.createUserHandler);
 /**
  * @swagger
  * /user/{id}:
@@ -237,7 +237,7 @@ router.post("/", authenticate, validate(createUserValidation), controller.create
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.put("/:id", authenticate, controller.updateUserHandler);
+router.put('/:id', authenticate, controller.updateUserHandler);
 /**
  * @swagger
  * /user/{id}:
@@ -274,6 +274,6 @@ router.put("/:id", authenticate, controller.updateUserHandler);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.delete("/:id", authenticate, controller.deleteUserHandler);
+router.delete('/:id', authenticate, controller.deleteUserHandler);
 export default router;
 //# sourceMappingURL=user.route.js.map

@@ -1,4 +1,4 @@
-import { successResponse } from "../utils/response.js";
+import { successResponse } from "../utils/response";
 export class CategoryController {
     categoryService;
     constructor(categoryService) {
@@ -15,7 +15,7 @@ export class CategoryController {
         const limit = Number(req.query.limit) || 10;
         const search = req.query.search;
         const sortBy = req.query.sortBy;
-        const sortOrder = req.query.sortOrder || "desc";
+        const sortOrder = req.query.sortOrder || 'desc';
         const result = await this.categoryService.getAll({
             page,
             limit,
@@ -29,11 +29,11 @@ export class CategoryController {
             total: result.total,
             totalPages: result.totalPages
         };
-        successResponse(res, "kategori berhasil ditambahkan", result.category, pagination);
+        successResponse(res, 'kategori berhasil ditambahkan', result.category, pagination);
     }
     async getCategoryByIdHandler(req, res) {
         if (!req.params.id) {
-            throw new Error("tidak ada param");
+            throw new Error('tidak ada param');
         }
         const category = await this.categoryService.getCategoryById(req.params.id);
         successResponse(res, "kategori sudah diambil", category);

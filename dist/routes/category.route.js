@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { CategoryController } from "../controllers/category.controller.js";
-import { validate } from "../utils/validator.js";
-import { getCategoryByIdValidation } from "../middlewares/category.validation.js";
-import { CategoryRepository } from "../repository/category.repository.js";
-import { CategoryService } from "../services/category.service.js";
-import prismaIntance from "../database.js";
-import { authenticate } from "../middlewares/auth.middleware.js";
+import { CategoryController } from "../controllers/category.controller";
+import { validate } from "../utils/validator";
+import { getCategoryByIdValidation } from "../middlewares/category.validation";
+import { CategoryRepository } from "../repository/category.repository";
+import { CategoryService } from "../services/category.service";
+import prismaIntance from "../database";
+import { authenticate } from "../middlewares/auth.middleware";
 const repo = new CategoryRepository(prismaIntance);
 const service = new CategoryService(repo);
 const controller = new CategoryController(service);
@@ -58,7 +58,7 @@ const router = Router();
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/", authenticate, controller.getAllCategoryHandler);
+router.get('/', authenticate, controller.getAllCategoryHandler);
 /**
  * @swagger
  * /category/stats:
@@ -88,7 +88,7 @@ router.get("/", authenticate, controller.getAllCategoryHandler);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/stats", authenticate, controller.getstats);
+router.get('/stats', authenticate, controller.getstats);
 /**
  * @swagger
  * /category/{id}:
@@ -125,7 +125,7 @@ router.get("/stats", authenticate, controller.getstats);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.get("/:id", authenticate, validate(getCategoryByIdValidation), controller.getCategoryByIdHandler);
+router.get('/:id', authenticate, validate(getCategoryByIdValidation), controller.getCategoryByIdHandler);
 /**
  * @swagger
  * /category/{id}:
@@ -174,7 +174,7 @@ router.get("/:id", authenticate, validate(getCategoryByIdValidation), controller
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.post("/", authenticate, controller.createCategoryHandler);
+router.post('/', authenticate, controller.createCategoryHandler);
 /**
  * @swagger
  * /category/{id}:
@@ -226,7 +226,7 @@ router.post("/", authenticate, controller.createCategoryHandler);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.put("/:id", authenticate, controller.updateCategoryHandler);
+router.put('/:id', authenticate, controller.updateCategoryHandler);
 /**
  * @swagger
  * /category/{id}:
@@ -263,6 +263,6 @@ router.put("/:id", authenticate, controller.updateCategoryHandler);
  *       401:
  *         description: koneksi tidak terhubung
  */
-router.delete("/:id", authenticate, controller.deleteCategoryHandler);
+router.delete('/:id', authenticate, controller.deleteCategoryHandler);
 export default router;
 //# sourceMappingURL=category.route.js.map

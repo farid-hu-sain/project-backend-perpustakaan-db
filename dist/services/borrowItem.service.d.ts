@@ -1,5 +1,5 @@
 import type { Prisma, BorrowItem } from "../generated";
-import type { IBorrowItemRepository } from "../repository/borrowItem.repository.js";
+import type { IBorrowItemRepository } from "../repository/borrowItem.repository";
 interface FindAllParams {
     page: number;
     limit: number;

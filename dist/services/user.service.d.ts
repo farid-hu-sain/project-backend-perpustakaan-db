@@ -1,5 +1,5 @@
 import type { Prisma, User } from "../generated";
-import type { IUserRepository } from "../repository/user.repository.js";
+import type { IUserRepository } from "../repository/user.repository";
 interface FindAllParams {
     page: number;
     limit: number;
